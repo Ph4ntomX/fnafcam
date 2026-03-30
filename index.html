@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FNAF Glitch Cam</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- HEADER -->
+    <header>
+      <span class="header-title">&#9632; FNAF GLITCH CAM</span>
+      <span class="header-sub">SECURITY MONITORING SYSTEM v2.1</span>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div id="main-layout">
+
+      <!-- SIDEBAR -->
+      <aside id="sidebar">
+        <div class="panel-label">// VISUAL PRESETS</div>
+
+        <div class="toggle-group">
+          <button class="toggle-btn active" data-preset="cctv" title="Green phosphor tint + vignette + CRT warp">
+            <span class="dot"></span> CCTV FILTER
+          </button>
+          <button class="toggle-btn active" data-preset="scanlines" title="Persistent horizontal scan lines">
+            <span class="dot"></span> SCAN LINES
+          </button>
+          <button class="toggle-btn" data-preset="staticnoise" title="Constant low-level grain">
+            <span class="dot"></span> STATIC NOISE
+          </button>
+          <button class="toggle-btn active" data-preset="camlabel" title="CAM 01 label overlay">
+            <span class="dot"></span> CAM 01 LABEL
+          </button>
+          <button class="toggle-btn active" data-preset="timestamp" title="Live CCTV timestamp">
+            <span class="dot"></span> TIMESTAMP
+          </button>
+          <button class="toggle-btn active" data-preset="recdot" title="Blinking REC indicator">
+            <span class="dot"></span> REC DOT
+          </button>
+          <button class="toggle-btn" data-preset="fisheye" title="Barrel distortion lens">
+            <span class="dot"></span> FISHEYE
+          </button>
+        </div>
+
+        <div class="panel-label" style="margin-top:18px;">// GLITCH INTENSITY</div>
+        <div class="intensity-row">
+          <input type="range" id="intensity-slider" min="0" max="3" step="1" value="1" />
+          <span id="intensity-label">MEDIUM</span>
+        </div>
+        <div class="intensity-ticks">
+          <span>LOW</span><span>MED</span><span>HIGH</span><span>UNHINGED</span>
+        </div>
+
+        <div class="panel-label" style="margin-top:18px;">// OUTPUT</div>
+        <button id="go-live-btn" class="action-btn" disabled>&#9654; GO LIVE</button>
+        <div id="go-live-status"></div>
+      </aside>
+
+      <!-- CENTER: CANVAS + CAPTURE -->
+      <div id="center-panel">
+        <div id="canvas-wrapper">
+          <canvas id="main-canvas" width="640" height="480"></canvas>
+          <video id="webcam-video" autoplay playsinline muted></video>
+          <div id="cam-blocked-msg">
+            <span>&#9888;</span><br/>CAMERA ACCESS REQUIRED<br/>
+            <small>Allow webcam permission to continue</small>
+          </div>
+        </div>
+
+        <div id="capture-bar">
+          <button id="capture-btn" class="action-btn" disabled>&#9632; CAPTURE GLITCH FACE</button>
+          <span id="capture-hint">Capture at least 1 face to activate glitch effect</span>
+        </div>
+
+        <!-- GALLERY -->
+        <div id="gallery-section">
+          <div class="panel-label">// GLITCH FRAME LIBRARY <span id="frame-count">[0 FRAMES]</span></div>
+          <div id="gallery-grid"></div>
+          <div id="gallery-empty">No frames captured. Strike a pose.</div>
+        </div>
+      </div>
+
+    </div><!-- end main-layout -->
+  </div><!-- end app -->
+
+  <!-- GO LIVE MODAL -->
+  <div id="modal-overlay" class="hidden">
+    <div id="modal">
+      <div class="modal-title">&#9632; VIRTUAL CAMERA OUTPUT</div>
+      <div class="modal-body">
+        <p>The canvas stream is now active at <strong>30fps</strong>.</p>
+        <p class="modal-step">&#9658; OPTION 1 — OBS Browser Source</p>
+        <ol>
+          <li>Open OBS Studio</li>
+          <li>Add a <strong>Browser Source</strong></li>
+          <li>Check <em>"Use custom frame rate"</em> → set to 30</li>
+          <li>Point it at this page's URL</li>
+          <li>Resize to match your scene</li>
+        </ol>
+        <p class="modal-step">&#9658; OPTION 2 — Virtual Camera via OBS</p>
+        <ol>
+          <li>With Browser Source added, click <strong>Start Virtual Camera</strong> in OBS</li>
+          <li>Select the OBS Virtual Camera in any video app</li>
+        </ol>
+        <p class="modal-note">The canvas stream is also accessible programmatically via <code>window.glitchCamStream</code>.</p>
+      </div>
+      <button id="modal-close" class="action-btn">CLOSE</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
