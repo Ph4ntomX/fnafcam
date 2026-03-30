@@ -1,13 +1,13 @@
 # FNAF Glitch Cam
 
-A cursed security camera viewer for your face. Open it in a browser, point your webcam at yourself, and wait.
+Security camera viewer for your face based on a meme I found online. Open it in a browser, point your webcam at yourself, and wait.
 
 ## Setup
 
 1. Open `index.html` in Chrome or Firefox
 2. Allow webcam access
 3. Click **CAPTURE GLITCH FACE** while making a horrifying expression (or several)
-4. Watch your own face haunt you at random intervals
+4. Watch your own face haunt you at random intervals, prank your friends in online calls with this
 
 ## Features
 
@@ -24,8 +24,12 @@ Click **Go Live**, then add a Browser Source in OBS pointed at this page. Or use
 
 The stream is also accessible at `window.glitchCamStream` from the browser console.
 
-## Notes
+It's not GREAT but I made this in like 10 minutes so it's all cool.
 
-- No dependencies, no build step — three files, open and go
-- Works best with dramatic lighting and poor life choices
-- The more faces you capture, the more unpredictable the glitches get
+## How I Made This
+
+I made an initial prompt with Claude describing the meme I found and then used Claude Code in the terminal.
+
+## Original Meme
+
+https://www.youtube.com/watch?v=lKq8tEeL6CM
